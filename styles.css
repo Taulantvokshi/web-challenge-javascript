@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 /* Config */
 * {
   margin: 0;
@@ -28,19 +29,93 @@ body {
     [center-end] minmax(10px, 1fr) [full-end];
   justify-content: center;
   align-content: center;
+
+  background-color: white;
 }
 
 /* @-------Main-------@ */
 .main-container {
   grid-column: center-start / center-end;
   display: grid;
-  grid-template-rows: 6rem min-content 6rem;
+  grid-template-rows: repeat(3, min-content);
 }
 
 /* @-------Main-notifications-------@ */
 .main-notifications {
-  height: 6rem;
-  background-color: tomato;
+  padding: 1rem;
+  /* background-color: #f6f6f6; */
+  margin-top: 2rem;
+  border-bottom: 1px solid #e8e8e8;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.options {
+  font-size: 1.3rem;
+
+  /* background-color: tomato; */
+  padding: 0.5rem;
+  color: #6b6b6b;
+}
+
+.options-download {
+  padding: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.options-download:hover {
+  background-color: #e8e8e8;
+}
+
+.options img {
+  width: 21px;
+  margin-right: 0.5rem;
+}
+
+.options-download-wrap {
+  position: relative;
+}
+.selected-images {
+  position: absolute;
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: red;
+  border-radius: 50%;
+  right: -0.6rem;
+  top: -1.1rem;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.1rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.logo {
+  font-size: 3.2rem;
+  color: #aaaaaa;
+  font-family: 'Pacifico', sans-serif;
+}
+.space {
+  opacity: 0;
+  height: 4rem;
+  width: 19rem;
+  background-color: #bedbbb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  color: white;
+  transform: translateX(4rem);
+}
+
+.selected-images {
+  opacity: 0;
 }
 
 /* @-------Main-content-------@ */
@@ -58,7 +133,6 @@ body {
   align-items: center;
   position: relative;
   cursor: pointer;
-  /* grid-row-end: 2 span; */
 }
 
 .imageTag {
@@ -77,7 +151,6 @@ body {
 }
 
 .hiddenDescription {
-  /* background-color: white; */
   bottom: 2rem;
   max-width: 335px;
   font-size: 1.4rem;
@@ -125,17 +198,23 @@ body {
   width: 5rem;
 }
 
-/* @-------Main-buttons-------@ */
-.main-buttons {
-  height: 6rem;
-  background-color: tomato;
+.expand-image-wrap {
+  position: absolute;
+  right: 2.7rem;
+  top: 2rem;
+  width: 2rem;
+  opacity: 0;
+  transform: translateX(3rem);
+  z-index: 300;
 }
-.button {
-  width: 8rem;
-  height: 5rem;
+
+/* @-------Main-buttons-------@ */
+.main-credit {
+  padding: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
-  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 200;
+  border-top: 1px solid #aaaaaa;
 }

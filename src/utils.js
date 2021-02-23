@@ -4,6 +4,7 @@
 const createSingleImage = (imgSource, imgDescription, animalName, index) => {
   //HIDDEN-PROPERTIES
   const hiddenAnimalDescription = document.createElement('div');
+
   hiddenAnimalDescription.setAttribute(
     'class',
     `hiddenDescription  hiddenDescription-${index}`
@@ -22,25 +23,33 @@ const createSingleImage = (imgSource, imgDescription, animalName, index) => {
   selectButtonImage.setAttribute('src', 'images/checked.svg');
   selectButton.appendChild(selectButtonImage);
 
-  hiddenAnimalTitle.textContent = animalName;
-  hiddenAnimalTitle.setAttribute('class', `hiddenTitle hiddenTitle-${index}`);
+  const expandImageContainer = document.createElement('div');
+  expandImageContainer.setAttribute(
+    'class',
+    `expand-image-wrap expand-image-wrap-${index}`
+  );
+  const expandImage = document.createElement('img');
+  expandImage.setAttribute('class', `expand-image`);
+  expandImage.setAttribute('src', 'images/full-screen.svg');
+  expandImageContainer.appendChild(expandImage);
 
   // VISIBILE-PROPERTIES
   const imageContainer = document.createElement('div');
   const imageTag = document.createElement('img');
-
-  imageContainer.setAttribute('class', 'imageWraper');
+  const imageWraperClass = `imageWraper-${index}`;
+  imageContainer.setAttribute('class', `imageWraper ${imageWraperClass}`);
   imageTag.setAttribute('class', 'imageTag');
-  imageTag.setAttribute('data-src', imgSource);
+  imageTag.setAttribute('src', imgSource);
 
   //DOM APPENDS
   imageContainer.appendChild(imageTag);
   imageContainer.appendChild(hiddenAnimalDescription);
   imageContainer.appendChild(hiddenAnimalTitle);
   imageContainer.appendChild(selectButton);
-  // imageContainer.appendChild(placeholder);
+  imageContainer.appendChild(expandImageContainer);
+
   imageContainer.onclick = () => {
-    return addSelectedImage(imgSource, index);
+    return addSelectedImage(imgSource, animalName, index, imageWraperClass);
   };
 
   return imageContainer;
