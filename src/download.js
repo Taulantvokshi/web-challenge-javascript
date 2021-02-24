@@ -24,6 +24,7 @@ const fetchLoop = async (_) => {
   });
 
   const downloadEnd = await Promise.all(promises);
+
   imageBadges.textContent = 0;
   imageBadges.style.opacity = 0;
   selected = 0;
@@ -31,16 +32,19 @@ const fetchLoop = async (_) => {
     item.reverse();
   });
   selectedImages = [];
-  downloadCount.textContent = `${downloadEnd.length} ${
-    downloadEnd.length > 1 ? 'Images Downloaded' : 'Image Downloaded'
-  }`;
-  const confirmAnimation = gsap
-    .timeline()
-    .to('.space', { opacity: 1, x: 0, ease: 'back' });
-  setTimeout(() => {
-    confirmAnimation.reverse();
-  }, 3000);
+  if (downloadEnd.length > 0) {
+    downloadCount.textContent = `${downloadEnd.length} ${
+      downloadEnd.length > 1 ? 'Images Downloaded' : 'Image Downloaded'
+    }`;
+    const confirmAnimation = gsap
+      .timeline()
+      .to('.space', { opacity: 1, x: 0, ease: 'back' });
+    setTimeout(() => {
+      confirmAnimation.reverse();
+    }, 3000);
+  }
 };
+
 downloadButton.addEventListener('click', (_) => {
   fetchLoop();
 });
