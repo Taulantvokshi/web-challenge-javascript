@@ -1,4 +1,4 @@
-## Web Challenge React
+## Web Challenge Javascript
 
 This project was fun to build :)
 
