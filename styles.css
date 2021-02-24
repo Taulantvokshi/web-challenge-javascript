@@ -29,8 +29,6 @@ body {
     [center-end] minmax(10px, 1fr) [full-end];
   justify-content: center;
   align-content: center;
-
-  background-color: white;
 }
 
 /* @-------Main-------@ */
@@ -98,7 +96,7 @@ body {
 
 .logo {
   font-size: 3.2rem;
-  color: #aaaaaa;
+  color: #495464;
   font-family: 'Pacifico', sans-serif;
 }
 .space {
@@ -138,7 +136,7 @@ body {
 .imageTag {
   width: 340px;
   min-height: 200px;
-  transition: all 1s;
+  transition: all 1.4s;
   overflow: hidden;
 }
 
@@ -208,7 +206,7 @@ body {
   z-index: 300;
 }
 
-/* @-------Main-buttons-------@ */
+/* @-------Main-Credit-------@ */
 .main-credit {
   padding: 2rem;
   display: flex;
@@ -217,4 +215,116 @@ body {
   font-size: 1.5rem;
   font-weight: 200;
   border-top: 1px solid #aaaaaa;
+}
+
+/* @-------MODAL-------@ */
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  align-items: center;
+  justify-content: center;
+  overflow: scroll;
+  z-index: 10000;
+  scroll-behavior: smooth;
+  display: none;
+}
+.fullscreen {
+  animation: visibile;
+  animation-duration: 0.4s;
+  position: relative;
+}
+.fullscreen-image {
+  max-height: 98vh;
+  width: 50vw;
+  object-fit: cover;
+}
+.fullscreen-download,
+.fullscreen-close {
+  cursor: pointer;
+  position: absolute;
+
+  background-color: whitesmoke;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: transform 0.5;
+}
+.fullscreen-download {
+  left: 1rem;
+  bottom: 1rem;
+  height: 4rem;
+  width: 12rem;
+  opacity: 0.5;
+  border-radius: 3px;
+}
+
+.fullscreen-close {
+  right: 1rem;
+  top: 1rem;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 100%;
+  opacity: 0.5;
+}
+
+.fullscreen-download:hover,
+.fullscreen-close:hover {
+  transform: scale(1.02);
+}
+.fullscreen-download-image,
+.fullscreen-close-image {
+  width: 2rem;
+}
+
+/* MEDIA-QUERY */
+@media only screen and (max-width: 652px) {
+  .main-notifications {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+    column-gap: 3rem;
+  }
+  .logo {
+    font-size: 2.5rem;
+  }
+  .space {
+    font-size: 1.2rem;
+    height: 3rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .fullscreen-image {
+    max-height: max-content;
+    width: 100vw !important;
+    object-fit: cover;
+  }
+  .space {
+    display: none;
+  }
+  .options-download {
+    background-color: #e8e8e8;
+  }
+  .main-notifications {
+    column-gap: 1rem;
+  }
+}
+
+/* //ANIMATIONS */
+@keyframes visibile {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

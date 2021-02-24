@@ -1,9 +1,8 @@
 /* eslint-disable no-undef */
-
 const downloadButton = document.querySelector('.options-download');
 const downloadCount = document.querySelector('.space-confirm');
 
-const mapLoop = async (_) => {
+const fetchLoop = async (_) => {
   const promises = selectedImages.map(async (imageSource) => {
     const a = document.createElement('a');
     a.style.display = 'none';
@@ -32,30 +31,16 @@ const mapLoop = async (_) => {
     item.reverse();
   });
   selectedImages = [];
-  downloadCount.textContent = `${downloadEnd.length} Images Downloaded`;
+  downloadCount.textContent = `${downloadEnd.length} ${
+    downloadEnd.length > 1 ? 'Images Downloaded' : 'Image Downloaded'
+  }`;
   const confirmAnimation = gsap
     .timeline()
     .to('.space', { opacity: 1, x: 0, ease: 'back' });
   setTimeout(() => {
     confirmAnimation.reverse();
   }, 3000);
-
-  // selectedImages.forEach((item) => {
-  //   let imageWraper = document.querySelector(`.${item.imageClass}`);
-  //   for (let i = 0; i < imageWraper.children.length; i++) {
-  //     let child = imageWraper.children[i];
-
-  //     const selectedButtonClass = child.className.split(' ')[1];
-
-  //     if (selectedButtonClass && selectedButtonClass.startsWith('select')) {
-  //       document.querySelector(`.${selectedButtonClass}`).style.opacity = 0;
-  //     }
-  //     if (child.tagName === 'IMG') {
-  //       child.style.filter = 'brightness(100%)';
-  //     }
-  //   }
-  // });
 };
-downloadButton.addEventListener('click', (e) => {
-  mapLoop();
+downloadButton.addEventListener('click', (_) => {
+  fetchLoop();
 });

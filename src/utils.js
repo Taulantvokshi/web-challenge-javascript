@@ -1,6 +1,6 @@
+/* eslint-disable no-undef */
 /* eslint-disable max-statements */
 /* eslint-disable no-unused-vars */
-
 const createSingleImage = (imgSource, imgDescription, animalName, index) => {
   //HIDDEN-PROPERTIES
   const hiddenAnimalDescription = document.createElement('div');
